@@ -10,6 +10,24 @@ This project:
 
 **Use it at your own discretion. Do not store critical secrets or enterprise credentials.**
 
+## Instructions
+Create a venv and install requirements with
+```
+py -m venv .venv or python -m venv .venv
+.venv/Scripts/activate  or source .venv/bin/activate
+pip install -r requirements.txt  
+```
+
+Run main.py
+Without an existing vault.enc, the user is able to define the master password used to access the vault.
+Once inputted, there will be a list of operations to select from:
+1. Adding a new record
+2. Retrieving a record
+3. Updating a record
+4. Removing a record
+5. Listing all records
+6. Exiting
+
 # Phase 1: CLI Password Manager
 Functional Requirements
    - Each record is identified by the site (Unique Identifier)
@@ -66,7 +84,7 @@ At this stage, the password manager  features 0 security and is merely an interf
    - Hard reset is generally done by manually deleting the vault
       
 **Vulnerabilities**:
-   - Situation: Local Password manager, Assume attacker has access to machine eiother in person or remote
+   - Situation: Local Password manager, Assume attacker has access to machine either in person or remote
    - main concern is the python dict in memory
       - Possible memory dumping/modification of code to print out information post decryption
          - Assumes attacker has access to system state DURING runtime
