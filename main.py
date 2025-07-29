@@ -5,10 +5,6 @@ import json
 import os
 import base64
 
-'''
-
-'''
-DATA_FILE = "pw.json"
 SALT_FILE = "salt.bin"
 VAULT_FILE = "vault.enc"
 

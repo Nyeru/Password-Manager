@@ -18,7 +18,8 @@ py -m venv .venv or python -m venv .venv
 pip install -r requirements.txt  
 ```
 
-Run main.py
+Run cli.py, main.py should be functionally the same and compatabile but doesnt make use of the VaultManager class
+
 Without an existing vault.enc, the user is able to define the master password used to access the vault.
 Once inputted, there will be a list of operations to select from:
 1. Adding a new record
