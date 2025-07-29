@@ -29,6 +29,8 @@ Once inputted, there will be a list of operations to select from:
 5. Listing all records
 6. Exiting
 
+**If the master password is forgotten or lost, there is no salvaging it. Delete the vault.enc or/and the salt.bin and rerun the script to set up a new master password.**
+
 # Phase 1: CLI Password Manager
 Functional Requirements
    - Each record is identified by the site (Unique Identifier)
