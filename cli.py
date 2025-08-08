@@ -1,4 +1,13 @@
 from VaultManager import VaultManager
+from enum import Enum
+
+class VaultActions(Enum):
+    CREATE = "1"
+    RETRIEVE = "2"
+    UPDATE = "3"
+    DELETE = "4"
+    LIST = "5"
+    QUIT = "q"
 
 def promptInput(fieldName: str):
     while True:
@@ -22,7 +31,7 @@ def siteList(manager: VaultManager):
 
 def main():
     manager = VaultManager()
-    masterPw = promptInput("master password")
+    masterPw = promptInput("master password").strip()
     if not manager.loadVault(masterPw):
         print("Wrong password or corrupted vault.")
         exit(1)
@@ -35,7 +44,7 @@ def main():
             print("5. List all sites")
             print("Q. Quit")
             choice = input("Choose an option: ").strip()
-            if choice == "1":
+            if choice == VaultActions.CREATE.value:
                 site = promptInput("Site Name")
                 if not site:
                     continue
@@ -49,7 +58,7 @@ def main():
                 if not password:
                     continue
                 manager.createRecord(site, username, password)
-            elif choice == "2":
+            elif choice == VaultActions.RETRIEVE.value:
                 siteList(manager)
                 site = promptInput("Site Name")
                 if not site:
@@ -59,7 +68,7 @@ def main():
                     print(f"Username: {record['username']}\nPassword: {record['password']}")
                 else:
                     print("No entry found.")
-            elif choice == "3":
+            elif choice == VaultActions.UPDATE.value:
                 site = promptInput("Site Name")
                 if not site:
                     continue
@@ -67,16 +76,15 @@ def main():
                 if not password:
                     continue
                 manager.updateRecord(site, password)
-            elif choice == "4":
-                
+            elif choice == VaultActions.DELETE.value:
                 siteList(manager)
                 site = promptInput("Site Name")
                 if not site:
                     continue
                 manager.deleteRecord(site)
-            elif choice == "5":
+            elif choice == VaultActions.LIST.value:
                 siteList(manager)
-            elif choice.lower() == "q":
+            elif choice.lower() == VaultActions.QUIT.value:
                 print("Farewell")
                 break
             else:
